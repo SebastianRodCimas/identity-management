@@ -1,15 +1,28 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {MatTableDataSource} from "@angular/material/table";
+import {MatPaginator} from "@angular/material/paginator";
+import { UserLdap } from '../model/user-ldap';
+import { LDAP_USERS } from '../model/ldap-mock-data';
+
 
 @Component({
   selector: 'app-ldap-list',
   templateUrl: './ldap-list.component.html',
   styleUrls: ['./ldap-list.component.scss']
 })
-export class LdapListComponent implements OnInit {
+export class LdapListComponent implements OnInit{
+  displayedColumns: string [] = ['nomComplet', 'mail', 'employeNumero'];
+  dataSource = new MatTableDataSource<UserLdap>([]);
 
-  constructor() { }
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
-  ngOnInit(): void {
+  constructor() {
   }
-
+  ngOnInit(): void {
+    this.dataSource.paginator = this.paginator;
+    this.getUsers();
+  }
+  private getUsers(): void {
+    this.dataSource.data = LDAP_USERS;
+  }
 }

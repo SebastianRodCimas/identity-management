@@ -4,6 +4,7 @@ export const LDAP_USERS: UserLdap[] = [
   {
     login: 'test.v1',
     nom: 'V1',
+    prenom: 'Test',
     nomComplet: 'V1 TEST',
     motDePasse: null,
     mail: 'test.v1@epsi.fr',
@@ -25,6 +26,7 @@ export const LDAP_USERS: UserLdap[] = [
     employeNumero: 2234,
     employeNiveau: 220,
     dateEmbauche: '2020-02-02',
+    publisherId: 1,
     active: true,
 
   },
