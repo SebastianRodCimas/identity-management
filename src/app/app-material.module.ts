@@ -10,6 +10,9 @@ import { MatListModule } from '@angular/material/list';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from "@angular/material/paginator";
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   exports: [
@@ -23,6 +26,9 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatListModule,
     MatTableModule,
     MatPaginatorModule,
+    MatFormFieldModule,
+    MatSlideToggleModule,
+    MatInputModule,
   ]
 })
 export class AppMaterialModule { }
