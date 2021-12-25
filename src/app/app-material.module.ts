@@ -12,7 +12,11 @@ import { MatPaginatorModule } from "@angular/material/paginator";
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import {MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarModule} from "@angular/material/snack-bar";
 import { MatInputModule } from '@angular/material/input';
+import {MatTooltipModule} from "@angular/material/tooltip";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {MatSelectModule} from "@angular/material/select";
 
 @NgModule({
   exports: [
@@ -28,7 +32,15 @@ import { MatInputModule } from '@angular/material/input';
     MatPaginatorModule,
     MatFormFieldModule,
     MatSlideToggleModule,
+    MatSnackBarModule,
     MatInputModule,
-  ]
+    MatTooltipModule,
+    MatProgressSpinnerModule,
+    MatSelectModule,
+  ],
+  providers: [
+    {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2500,
+        verticalPosition: 'top'}}
+  ],
 })
 export class AppMaterialModule { }
