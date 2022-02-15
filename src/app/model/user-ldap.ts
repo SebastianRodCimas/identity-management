@@ -1,4 +1,5 @@
-export interface UserLdap {
+export interface UserLdap{
+  id: number;
   login: string;
   nom: string;
   prenom: string;
@@ -7,9 +8,8 @@ export interface UserLdap {
   mail: string;
   role: string;
   employeNumero: number;
-  employeNiveau : number;
+  employeNiveau: number;
   dateEmbauche: string;
   publisherId: number;
   active: boolean;
-
 }

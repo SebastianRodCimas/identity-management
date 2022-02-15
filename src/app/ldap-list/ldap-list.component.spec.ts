@@ -10,7 +10,7 @@ describe('LdapListComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ LdapListComponent ]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
