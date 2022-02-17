@@ -18,6 +18,8 @@ import {FormBuilder, FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { LdapEditComponent } from './ldap-edit/ldap-edit.component';
 import { LdapAddComponent } from './ldap-add/ldap-add.component';
 import { AlertComponent } from './share/alert/alert.component';
+import { LoginComponent } from './security/login/login.component';
+import {MatCardModule} from "@angular/material/card";
 
 
 @NgModule({
@@ -28,24 +30,26 @@ import { AlertComponent } from './share/alert/alert.component';
     NavbarComponent,
     LdapEditComponent,
     LdapAddComponent,
-    AlertComponent
+    AlertComponent,
+    LoginComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    AppMaterialModule,
-    LayoutModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatListModule,
-    FormsModule,
-    ReactiveFormsModule,
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        AppMaterialModule,
+        LayoutModule,
+        MatToolbarModule,
+        MatButtonModule,
+        MatSidenavModule,
+        MatIconModule,
+        MatListModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatCardModule,
 
 
-  ],
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
