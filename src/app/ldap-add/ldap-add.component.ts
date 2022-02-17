@@ -1,0 +1,43 @@
+import { Component, OnInit } from '@angular/core';
+import {LdapDetailComponent} from "../ldap-detail/ldap-detail.component";
+import {UsersService} from "../service/users.service";
+import {FormBuilder} from "@angular/forms";
+import {ActivatedRoute, Router} from "@angular/router";
+import {MatSnackBar} from "@angular/material/snack-bar";
+
+@Component({
+  selector: 'app-ldap-add',
+  templateUrl: '../ldap-detail/ldap-detail.component.html',
+  styleUrls: ['../ldap-detail/ldap-detail.component.css']
+})
+export class LdapAddComponent extends LdapDetailComponent implements OnInit {
+
+  constructor(private usersService: UsersService,
+              private route: ActivatedRoute,
+              fb: FormBuilder,
+              router: Router,
+              private snackBar: MatSnackBar) {
+    super(false, fb, router);
+  }
+
+  ngOnInit(): void {
+    super.ngOnInit();
+  }
+
+  validateForm(): void {
+    console.log('LdapAddComponent - validateForm');
+    this.processValidateRunning = true;
+    this.usersService.addUser(this.getUserFromFormControl()).subscribe(
+      data => {
+        this.processValidateRunning = false;
+        this.errorMessage = '';
+        this.snackBar.open('Utilisateur ajouté !', 'X');
+      },
+      error => {
+        this.processValidateRunning = false;
+        this.errorMessage = "Une erreur est survenue dans la modification !";
+        this.snackBar.open('Utilisateur non ajouté !', 'X');
+      })
+  }
+
+}
