@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {LdapDetailComponent} from "../ldap-detail/ldap-detail.component";
-import {UsersService} from "../service/users.service";
+import {UsersService} from "../../service/users.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {FormBuilder} from "@angular/forms";
 import {MatSnackBar} from "@angular/material/snack-bar";
@@ -8,7 +8,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 @Component({
   selector: 'app-ldap-edit',
   templateUrl: '../ldap-detail/ldap-detail.component.html',
-  styleUrls: ['../ldap-detail/ldap-detail.component.css']
+  styleUrls: ['../ldap-management/ldap-detail/ldap-detail.component.css']
 })
 export class LdapEditComponent extends LdapDetailComponent implements OnInit {
 
