@@ -8,7 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppMaterialModule } from './app-material.module';
 import { NavbarComponent } from './ldap-management/navbar/navbar.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import { LdapManagementModule } from './ldap-management.module';
+import { LdapManagementModule } from "./ldap-management/ldap-management.module";
 import { LoginComponent } from './security/login/login.component';
 import {MatInputModule} from "@angular/material/input";
 import {MatFormFieldModule} from "@angular/material/form-field";
