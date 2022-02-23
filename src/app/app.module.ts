@@ -12,6 +12,7 @@ import { LdapManagementModule } from "./ldap-management/ldap-management.module";
 import { LoginComponent } from './security/login/login.component';
 import {MatInputModule} from "@angular/material/input";
 import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatCardModule} from "@angular/material/card";
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import {MatFormFieldModule} from "@angular/material/form-field";
     LdapManagementModule,
     AppRoutingModule,
     MatInputModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

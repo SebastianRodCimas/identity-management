@@ -2,32 +2,33 @@ import { Component, OnInit } from '@angular/core';
 import {LdapDetailComponent} from "../ldap-detail/ldap-detail.component";
 import {UsersService} from "../../service/users.service";
 import {FormBuilder} from "@angular/forms";
-import {ActivatedRoute, Router} from "@angular/router";
+import {Router} from "@angular/router";
 import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-ldap-add',
   templateUrl: '../ldap-detail/ldap-detail.component.html',
-  styleUrls: ['../ldap-detail/ldap-detail.component.css']
+  styleUrls: ['../ldap-detail/ldap-detail.component.scss']
 })
 export class LdapAddComponent extends LdapDetailComponent implements OnInit {
 
-  constructor(private usersService: UsersService,
-              private route: ActivatedRoute,
-              fb: FormBuilder,
-              router: Router,
-              private snackBar: MatSnackBar) {
-    super(false, fb, router);
+  constructor(
+    private usersService: UsersService,
+    fb: FormBuilder,
+    router: Router,
+    private snackBar: MatSnackBar
+  ) {
+    super(true, fb, router);
   }
 
   ngOnInit(): void {
-    super.ngOnInit();
+    super.onInit();
   }
 
   validateForm(): void {
     console.log('LdapAddComponent - validateForm');
     this.processValidateRunning = true;
-    this.usersService.addUser(this.getUserFromFormControl()).subscribe(
+    this.usersService.addUser(this.getUserFormControl()).subscribe(
       data => {
         this.processValidateRunning = false;
         this.errorMessage = '';
@@ -35,9 +36,9 @@ export class LdapAddComponent extends LdapDetailComponent implements OnInit {
       },
       error => {
         this.processValidateRunning = false;
-        this.errorMessage = "Une erreur est survenue dans la modification !";
-        this.snackBar.open('Utilisateur non ajouté !', 'X');
-      })
+        this.errorMessage = "L'utilisateur n'a pas pu être ajouté";
+        this.snackBar.open("Erreur dans l'ajout de l'utilisateur", 'X');
+      }
+    )
   }
-
 }

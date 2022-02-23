@@ -8,7 +8,7 @@ export const passwordValidator: ValidatorFn = (form: FormGroup): ValidationError
   return password && confirmPassword && password.value === confirmPassword.value ? null : {passwordValidator: true};
 };
 
-export class ConfirmValidParentMatcher implements ErrorStateMatcher{
+export class ConfirmValidatorParentMatcher implements ErrorStateMatcher{
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
     return control.parent.invalid && control.touched;
   }
