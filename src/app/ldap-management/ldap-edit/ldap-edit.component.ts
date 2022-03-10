@@ -42,7 +42,7 @@ export class LdapEditComponent extends LdapDetailComponent implements OnInit {
         this.errorMessage = "L'utilisateur n'existe pas";
         this.snackBar.open("Utilisateur non trouvé", "X");
       }
-    )
+    );
   }
 
   validateForm(): void {
