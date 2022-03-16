@@ -2,7 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatTableDataSource} from "@angular/material/table";
 import {UserLdap} from "../../model/user-ldap";
 import {MatPaginator} from "@angular/material/paginator";
-import {MatSlideToggleChange, MatSlideToggleModule} from "@angular/material/slide-toggle";
+import {MatSlideToggleChange} from "@angular/material/slide-toggle";
 import {UsersService} from "../../service/users.service";
 import {Router} from "@angular/router";
 
@@ -17,31 +17,16 @@ export class LdapListComponent implements OnInit {
   dataSource = new MatTableDataSource<UserLdap>([]);
   unactiveSelected = false;
 
-  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
   constructor(private usersService: UsersService, private router: Router) { }
 
   ngOnInit(): void {
-
     this.dataSource.paginator = this.paginator;
     this.getUsers();
   }
 
-  private getUsers(): void {
-    this.usersService.getUsers().subscribe(
-      users => {
-        if(this.unactiveSelected){
-          this.dataSource.data = users.filter(user=>
-            user.active === false
-          );
-        }else {
-          this.dataSource.data = users;
-        }
-      }
-    );
-  }
-
-  filterPredicate(data, filter): boolean {
+  filterPredicate(data, filter): boolean{
     return !filter || data.nomComplet.toLowerCase().startsWith(filter);
   }
 
@@ -50,25 +35,37 @@ export class LdapListComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
+  private getUsers(): void {
+    this.usersService.getUsers().subscribe(
+      users => {
+        if(this.unactiveSelected) {
+          this.dataSource.data = users.filter(user =>
+            user.active === false
+          );
+        } else {
+          this.dataSource.data = users
+        }
+      }
+    )
+  }
+
   unactiveChanged($event: MatSlideToggleChange): void {
     this.unactiveSelected = $event.checked;
     this.getUsers();
   }
 
-  edit(login: string) {
-    this.router.navigate(['/users', login]).then((e) => {
-      if(!e){
-        console.log("Navigation has failed!");
-      }
+  edit(login: string){
+    console.log(login);
+    this.router.navigate(['/users', login]).then( (e) => {
+      if(!e)
+        console.log("Navigation has failed !");
     })
   }
 
   addUser(){
-    this.router.navigate(['users/add']).then((e) => {
-      if(!e){
-        console.log('Navigation has failed!');
-      }
-    });
+    this.router.navigate(['/users/add']).then( (e) => {
+      if(!e)
+        console.log('Navigation has failed !');
+    })
   }
-
 }

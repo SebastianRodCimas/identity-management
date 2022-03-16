@@ -9,13 +9,12 @@ import {AlertComponent} from "../share/alert/alert.component";
 import {BrowserModule} from "@angular/platform-browser";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {AppMaterialModule} from "../app-material.module";
-import {MatSlideToggleModule} from "@angular/material/slide-toggle";
-import {MatInputModule} from "@angular/material/input";
+import { MatSnackBarModule} from "@angular/material/snack-bar";
 import {HttpClientModule} from "@angular/common/http";
-import {HttpClientInMemoryWebApiModule, InMemoryBackendConfig} from "angular-in-memory-web-api";
+import {HttpClientInMemoryWebApiModule} from "angular-in-memory-web-api";
 import {InMemoryUsersService} from "../in-memory-users.service";
+import {AppModule} from "../app.module";
 import {NavbarComponent} from "./navbar/navbar.component";
-import {MatFormFieldModule} from "@angular/material/form-field";
 
 
 @NgModule({
@@ -24,7 +23,7 @@ import {MatFormFieldModule} from "@angular/material/form-field";
     LdapAddComponent,
     LdapEditComponent,
     AlertComponent,
-    NavbarComponent
+    NavbarComponent,
   ],
   imports: [
     CommonModule,
@@ -33,13 +32,12 @@ import {MatFormFieldModule} from "@angular/material/form-field";
     ReactiveFormsModule,
     AppMaterialModule,
     LdapManagementRoutingModule,
-    MatSlideToggleModule,
-    MatInputModule,
-    MatFormFieldModule,
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryUsersService, {dataEncapsulation: false}
-    )
+    ),
+  ],
+  exports: [
   ]
 })
 export class LdapManagementModule { }

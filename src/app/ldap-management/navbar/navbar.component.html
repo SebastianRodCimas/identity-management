@@ -6,7 +6,6 @@
       mat-icon-button
       (click)="drawer.toggle()"
     >
-
       <mat-icon *ngIf="drawer.opened === false"
                 aria-label="Side nav toggle icon">menu_open</mat-icon>
       <mat-icon *ngIf="drawer.opened === true"
@@ -22,70 +21,45 @@
     </button>
   </mat-toolbar>
 
-
   <mat-sidenav-container class="sidenav-container">
     <mat-sidenav #drawer class="sidenav" fixedInViewport fixedTopGap="64"
                  [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
                  [mode]="(isHandset$ | async) ? 'over' : 'side'"
                  [opened]="(isHandset$ | async) === false">
-
-
-
       <mat-nav-list>
         <h2 matSubheader>Utilisateurs</h2>
         <a mat-list-item
            routerLink="/users/dashboard"
            routerLinkActive="list-item-active"
         >
-
-          <mat-icon matListIcon>dashboard</mat-icon>
+          <mat-icon matlisticon>dashboard</mat-icon>
           Dashboard
         </a>
-
-
-
         <a mat-list-item
            routerLink="/users/list"
            routerLinkActive="list-item-active"
         >
-          <mat-icon matListIcon>list</mat-icon>
-          Ldap
+          <mat-icon matlisticon>list</mat-icon>
+          List
         </a>
 
         <mat-divider></mat-divider>
 
         <h2 matSubheader>Importation</h2>
-
         <a mat-list-item
            routerLink="/users/import"
            routerLinkActive="list-item-active"
         >
-
-          <mat-icon matListIcon>save_alt</mat-icon>
+          <mat-icon matlisticon>save_alt</mat-icon>
           Importation
         </a>
-
       </mat-nav-list>
     </mat-sidenav>
 
-
     <mat-sidenav-content>
-      <!--      <mat-toolbar color="primary">-->
-      <!--        <button-->
-      <!--          type="button"-->
-      <!--          aria-label="Toggle sidenav"-->
-      <!--          mat-icon-button-->
-      <!--          (click)="drawer.toggle()"-->
-      <!--          *ngIf="isHandset$ | async">-->
-      <!--          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>-->
-      <!--        </button>-->
-      <!--        <span>identity-management</span>-->
-      <!--      </mat-toolbar>-->
-
       <div class="main_content">
         <ng-content></ng-content>
       </div>
-      <!-- Add Content Here -->
     </mat-sidenav-content>
   </mat-sidenav-container>
 </div>
